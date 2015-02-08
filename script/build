@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+. script/functions
+
+options="--rm"
+echo $@ | grep '\--no-cache' &> /dev/null && options="$options --no-cache" || :
+
+info "Build images."
+for distro in $distros; do
+  unlink Dockerfile &> /dev/null || :
+  ln Dockerfile.$distro Dockerfile
+  smitty docker build $options -t puppet:$distro .
+  unlink Dockerfile &> /dev/null || :
+done
+
+info "Show image sizes."
+docker images | egrep '^puppet\b' | sort
+
+echo
+echo "WARN: you should docker tag the puppet images"
+echo
