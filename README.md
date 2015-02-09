@@ -3,7 +3,7 @@ Puppet on CoreOS
 
 Project URL: https://github.com/jumanjihouse/puppet-on-coreos
 
-Docker registry: https://registry.hub.docker.com/u/jumanjiman/puppet-on-coreos/
+Docker registry: https://registry.hub.docker.com/u/jumanjiman/puppet/
 
 
 Overview
@@ -17,6 +17,9 @@ with these userspace distros:
 
 * Alpine (41 MB)
 * Centos7 (281 MB)
+
+If you want to run Puppet Master in a container, see
+[my docker-puppet git repo](https://github.com/jumanjiman/docker-puppet).
 
 
 Wat? Why?
@@ -43,8 +46,11 @@ Run simple tests (on a CoreOS host):
 
 If you like the images, tag and push:
 
-    docker tag puppet:alpine  <registry>/<id>/puppet-on-coreos:alpine
-    docker tag puppet:centos7 <registry>/<id>/puppet-on-coreos:centos7
+    docker tag puppet:alpine  <registry>/<id>/puppet:latest
+    docker tag puppet:alpine  <registry>/<id>/puppet:alpine
+    docker tag puppet:centos7 <registry>/<id>/puppet:centos7
+
+For my images, the `latest` tag points to the latest alpine build.
 
 
 To-do
