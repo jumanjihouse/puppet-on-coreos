@@ -11,7 +11,7 @@ ADD https://raw.githubusercontent.com/jumanjiman/facter/coreos/lib/facter/operat
 ADD https://raw.githubusercontent.com/jumanjiman/facter/coreos/lib/facter/operatingsystem/osreleaselinux.rb  /usr/lib/ruby/gems/2.1.0/gems/facter-2.4.0/lib/facter/operatingsystem/osreleaselinux.rb
 
 ENV container docker
-VOLUME ["/sys/fs/cgroup", "/run", "/etc", "/var/lib/puppet", "/lib64"]
+VOLUME ["/sys/fs/cgroup", "/run", "/var/lib/puppet", "/lib64"]
 
 ENTRYPOINT ["/usr/bin/puppet"]
 CMD ["help"]
