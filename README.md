@@ -46,9 +46,13 @@ Run simple tests (on a CoreOS host):
 
 If you like the images, tag and push:
 
-    docker tag puppet:alpine  <registry>/<id>/puppet:latest
-    docker tag puppet:alpine  <registry>/<id>/puppet:alpine
-    docker tag puppet:centos7 <registry>/<id>/puppet:centos7
+    script/tag  <registry>/<id>
+    script/push <registry>/<id>
+
+Example:
+
+    script/tag  jumanjiman
+    script/push jumanjiman
 
 For my images, the `latest` tag points to the latest alpine build.
 
