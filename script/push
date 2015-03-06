@@ -3,5 +3,3 @@
 registry=${1:-jumanjiman}
 
 docker push $registry/puppet:latest
-docker push $registry/puppet:alpine
-docker push $registry/puppet:centos7

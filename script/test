@@ -3,29 +3,26 @@ set -e
 
 . script/functions
 
-distro=$1
-[[ -z $distro ]] && err You must provide distro as first argument
-
 info "Show users and groups inside container."
 # /etc/group does not have gid 0, which causes warning in puppet:
 # /usr/bin/id: cannot find name for group ID 0
-docker_run puppet:$distro getent passwd
-docker_run puppet:$distro getent group
+docker_run puppet getent passwd
+docker_run puppet getent group
 
 info "Manipulate systemd on host (outside of container)."
-docker_run puppet:$distro systemctl restart update-engine.service
-docker_run puppet:$distro systemctl status update-engine.service
+docker_run puppet systemctl restart update-engine.service
+docker_run puppet systemctl status update-engine.service
 
 info "Use facter."
-docker_run puppet:$distro facter operatingsystem
-docker_run puppet:$distro facter osfamily
+docker_run puppet facter operatingsystem
+docker_run puppet facter osfamily
 
 info "Show puppet help."
-smitty docker run --rm -t $volumes puppet:$distro
+smitty docker run --rm -t $volumes puppet
 
 info "Use puppet to install a file on host (outside of container)."
 info "Disable network and UTS namespaces since we store puppet cert on host."
 smitty sudo rm -f /etc/foo
-smitty docker run --rm -t $volumes --net host puppet:$distro \
+smitty docker run --rm -t $volumes --net host puppet \
   apply $debug $trace -e 'file {"/etc/foo": ensure => file, content => "bar\n", } notify {"$::operatingsystem":}'
 smitty cat /etc/foo

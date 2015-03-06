@@ -14,9 +14,6 @@ err() {
   exit 1
 }
 
-distro=$1
-distros="$(ls Dockerfile.* | awk -F. '{print $NF}')"
-
 # On CoreOS, /var/run is a symlink to /run:
 #
 # core@ip-192-168-254-162 ~ $ ls -ld /run
@@ -31,15 +28,8 @@ volumes="
   -v /run:/run:ro
   -v /usr/bin/systemctl:/usr/bin/systemctl:ro
   -v /sys/fs/cgroup:/sys/fs/cgroup:ro
-"
-
-if [[ $distro = alpine ]]; then
-  # systemctl is dynamically linked, so
-  # we need libraries on busybox-based distros.
-  volumes="$volumes
   -v /lib64:/lib64:ro
-  "
-fi
+"
 
 docker_run() {
   image=$1; shift

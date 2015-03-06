@@ -2,6 +2,4 @@
 
 registry=${1:-jumanjiman}
 
-docker tag -f puppet:alpine  $registry/puppet:latest
-docker tag -f puppet:alpine  $registry/puppet:alpine
-docker tag -f puppet:centos7 $registry/puppet:centos7
+docker tag -f puppet $registry/puppet:latest

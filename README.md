@@ -16,7 +16,6 @@ This git repo enables you to build docker images with the latest Puppet version
 with these userspace distros:
 
 * Alpine (41 MB)
-* Centos7 (281 MB)
 
 If you want to run Puppet Master in a container, see
 [my docker-puppet git repo](https://github.com/jumanjiman/docker-puppet).
@@ -42,7 +41,6 @@ Build images:
 Run simple tests (on a CoreOS host):
 
     script/test alpine
-    script/test centos7
 
 If you like the images, tag and push:
 
