@@ -2,7 +2,7 @@ FROM alpine:latest
 
 # Puppet absolutely needs the shadow utils, such as useradd.
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing/ >> /etc/apk/repositories
-RUN apk upgrade --update && \
+RUN apk upgrade --update --available && \
     apk add \
       ca-certificates \
       ruby \
