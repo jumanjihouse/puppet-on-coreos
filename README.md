@@ -1,6 +1,8 @@
 Puppet on CoreOS
 ================
 
+[![](https://badge.imagelayers.io/jumanjiman/puppet.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'image size and layers')
+
 Project URL: https://github.com/jumanjihouse/puppet-on-coreos
 
 Docker registry: https://registry.hub.docker.com/u/jumanjiman/puppet/
