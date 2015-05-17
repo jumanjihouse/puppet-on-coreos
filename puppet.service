@@ -1,0 +1,29 @@
+[Unit]
+Description=Run puppet agent
+After=docker.service
+Requires=docker.service
+
+[Service]
+ExecStartPre=/bin/bash -c '/usr/bin/docker inspect %n &> /dev/null && /usr/bin/docker rm %n || :'
+ExecStart=/usr/bin/docker run \
+  --name %n \
+  --net=host \
+  -v /media/staging:/opt/staging \
+  -v /etc/systemd:/etc/systemd \
+  -v /etc/puppet:/etc/puppet \
+  -v /var/lib/puppet:/var/lib/puppet \
+  -v /home/core:/home/core \
+  -v /etc/os-release:/etc/os-release:ro \
+  -v /etc/lsb-release:/etc/lsb-release:ro \
+  -v /etc/coreos:/etc/coreos:rw \
+  -v /run:/run:ro \
+  -v /usr/bin/systemctl:/usr/bin/systemctl:ro \
+  -v /lib64:/lib64:ro \
+  -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+  jumanjiman/puppet:latest \
+  agent --no-daemonize --logdest=console --server=puppet --environment=production
+RestartSec=5s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
