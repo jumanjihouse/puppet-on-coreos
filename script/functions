@@ -36,7 +36,7 @@ docker_run() {
   entrypoint=$1; shift
   command=$@
 
-  [[ -n $entrypoint ]] && entrypoint="--entrypoint $entrypoint"
+  [ -n "$entrypoint" ] && entrypoint="--entrypoint $entrypoint"
 
-  smitty docker run --rm -t $volumes $entrypoint $image $command
+  smitty docker run -t $volumes $entrypoint $image $command
 }

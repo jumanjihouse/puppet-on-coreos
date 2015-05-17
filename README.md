@@ -1,7 +1,8 @@
 Puppet on CoreOS
 ================
 
-[![](https://badge.imagelayers.io/jumanjiman/puppet.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'image size and layers')
+[![](https://badge.imagelayers.io/jumanjiman/puppet.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'View image size and layers')&nbsp;
+[![Circle CI](https://circleci.com/gh/jumanjihouse/puppet-on-coreos.png?circle-token=f9208a48c93c066eedc085afb8e79fd6d2f6c6a4)](https://circleci.com/gh/jumanjihouse/puppet-on-coreos/tree/master 'View CI builds')
 
 Project URL: https://github.com/jumanjihouse/puppet-on-coreos
 
@@ -13,11 +14,6 @@ Overview
 
 Run Puppet inside a container such that it affects the state
 of the underlying CoreOS host.
-
-This git repo enables you to build docker images with the latest Puppet version
-with these userspace distros:
-
-* Alpine (41 MB)
 
 If you want to run Puppet Master in a container, see
 [my docker-puppet git repo](https://github.com/jumanjiman/docker-puppet).
@@ -40,28 +36,9 @@ Build images:
 
     script/build
 
-Run simple tests (on a CoreOS host):
+Run simple tests:
 
-    script/test alpine
-
-If you like the images, tag and push:
-
-    script/tag  <registry>/<id>
-    script/push <registry>/<id>
-
-Example:
-
-    script/tag  jumanjiman
-    script/push jumanjiman
-
-For my images, the `latest` tag points to the latest alpine build.
-
-
-To-do
------
-
-Add fixtures and modify scripts to build and test on a hosted CI.
-If CI tests pass, then push built images to Docker registry.
+    script/test
 
 
 License

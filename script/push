@@ -1,5 +1,0 @@
-#!/bin/sh
-
-registry=${1:-jumanjiman}
-
-docker push $registry/puppet:latest
