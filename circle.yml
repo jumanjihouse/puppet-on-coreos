@@ -26,7 +26,7 @@ deployment:
     owner: jumanjihouse
     commands:
       - docker login -e ${mail} -u ${user} -p ${pass}
-      - docker tag jumanjiman/puppet jumanjiman/puppet:${CIRCLE_SHA1:0:7}
+      - docker tag puppet jumanjiman/puppet:${CIRCLE_SHA1:0:7}
       - docker push jumanjiman/puppet:${CIRCLE_SHA1:0:7}
       - docker push jumanjiman/puppet:latest
       - docker logout
