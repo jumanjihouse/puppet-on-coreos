@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.1
 
 # Puppet absolutely needs the shadow utils, such as useradd.
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing/ >> /etc/apk/repositories
@@ -11,7 +11,7 @@ RUN apk upgrade --update --available && \
     && rm -f /var/cache/apk/* && \
     gem install -N \
       facter:'>= 2.4.3' \
-      puppet:'< 4.0' \
+      puppet:'= 3.8.1' \
     && rm -fr /root/.gem
 
 ENV container docker
