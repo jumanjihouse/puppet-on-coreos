@@ -1,5 +1,7 @@
 # https://circleci.com/docs/docker
 machine:
+  environment:
+    DATE: $(date +%Y%m%dT%H%M)
   pre:
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.6.0-circleci'
     - sudo chmod 0755 /usr/bin/docker
@@ -26,8 +28,8 @@ deployment:
     owner: jumanjihouse
     commands:
       - docker login -e ${mail} -u ${user} -p ${pass}
-      - docker tag puppet jumanjiman/puppet:3.8.2-${CIRCLE_SHA1:0:7}
-      - docker push jumanjiman/puppet:3.8.2-${CIRCLE_SHA1:0:7}
+      - docker tag puppet jumanjiman/puppet:3.8.2-${DATE}-git-${CIRCLE_SHA1:0:7}
+      - docker push jumanjiman/puppet:3.8.2-${DATE}-git-${CIRCLE_SHA1:0:7}
       - docker tag puppet jumanjiman/puppet:latest
       - docker push jumanjiman/puppet:latest
       - docker logout
