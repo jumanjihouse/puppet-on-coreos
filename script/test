@@ -28,3 +28,4 @@ smitty sudo rm -f /etc/foo
 smitty docker run -t $volumes --net host puppet \
   apply $debug $trace -e 'file {"/etc/foo": ensure => file, content => "bar\n", } notify {"$::operatingsystem":}'
 smitty cat /etc/foo
+smitty docker run -t $volumes --net host puppet help query | grep 'USAGE: puppet query'

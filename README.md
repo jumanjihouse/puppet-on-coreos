@@ -16,6 +16,9 @@ Overview
 Run Puppet inside a container such that it affects the state
 of the underlying CoreOS host.
 
+Query PuppetDB from the CLI with the help of
+https://github.com/dalen/puppet-puppetdbquery.
+
 If you want to run Puppet Master in a container, see
 [my docker-puppet git repo](https://github.com/jumanjiman/docker-puppet).
 

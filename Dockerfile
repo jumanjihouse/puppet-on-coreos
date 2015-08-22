@@ -7,12 +7,15 @@ RUN apk upgrade --update --available && \
       ca-certificates \
       openssl=1.0.1p-r0 \
       ruby \
+      ruby-json \
       util-linux \
       shadow \
     && rm -f /var/cache/apk/* && \
     gem install -N \
       facter:'>= 2.4.4' \
       puppet:'= 3.8.2' \
+      puppetdb-terminus \
+      ruby-puppetdb:'= 1.6.1' \
     && rm -fr /root/.gem
 
 ENV container docker
