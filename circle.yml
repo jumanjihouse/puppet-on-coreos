@@ -33,3 +33,10 @@ deployment:
       - docker tag puppet jumanjiman/puppet:latest
       - docker push jumanjiman/puppet:latest
       - docker logout
+  pulls:
+    branch: /^(?!master).*$/
+    commands:
+      - docker login -e . -u jumanjiman+push -p ${rp} quay.io
+      - docker tag puppet quay.io/jumanjiman/puppet:${CIRCLE_PR_USERNAME}_${CIRCLE_BRANCH/\//_}
+      - docker push quay.io/jumanjiman/puppet:${CIRCLE_PR_USERNAME}_${CIRCLE_BRANCH/\//_}
+      - docker logout
