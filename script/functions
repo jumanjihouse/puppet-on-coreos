@@ -22,14 +22,19 @@ err() {
 # core@ip-192-168-254-162 ~ $ ls -ld /var/run
 # lrwxrwxrwx 1 root root 4 Jul 12  2014 /var/run -> /run
 volumes="
-  -v /etc:/etc/
+  -v /etc/bar:/etc/bar
   -v /var/lib/puppet:/var/lib/puppet
   -v /etc/os-release:/etc/os-release:ro
-  -v /run:/run:ro
   -v /usr/bin/systemctl:/usr/bin/systemctl:ro
-  -v /sys/fs/cgroup:/sys/fs/cgroup:ro
   -v /lib64:/lib64:ro
 "
+if ! [ ${CIRCLECI} = true ]; then
+  volumes="
+    ${volumes}
+    -v /run:/run:ro
+    -v /sys/fs/cgroup:/sys/fs/cgroup:ro
+  "
+fi
 
 docker_run() {
   image=$1; shift

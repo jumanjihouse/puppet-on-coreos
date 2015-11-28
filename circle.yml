@@ -2,8 +2,9 @@
 machine:
   environment:
     DATE: $(date +%Y%m%dT%H%M)
+    PUPPET_VERSION: 3.8.4
   pre:
-    - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.6.0-circleci'
+    - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
     - sudo chmod 0755 /usr/bin/docker
   services:
     - docker
@@ -28,8 +29,8 @@ deployment:
     owner: jumanjihouse
     commands:
       - docker login -e ${mail} -u ${user} -p ${pass}
-      - docker tag puppet jumanjiman/puppet:3.8.3-${DATE}-git-${CIRCLE_SHA1:0:7}
-      - docker push jumanjiman/puppet:3.8.3-${DATE}-git-${CIRCLE_SHA1:0:7}
+      - docker tag puppet jumanjiman/puppet:${PUPPET_VERSION}-${DATE}-git-${CIRCLE_SHA1:0:7}
+      - docker push jumanjiman/puppet:${PUPPET_VERSION}-${DATE}-git-${CIRCLE_SHA1:0:7}
       - docker tag puppet jumanjiman/puppet:latest
       - docker push jumanjiman/puppet:latest
       - docker logout
