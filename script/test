@@ -24,7 +24,5 @@ smitty docker run -t $volumes puppet
 
 info "Use puppet to install a file on host (outside of container)."
 info "Disable network and UTS namespaces since we store puppet cert on host."
-smitty sudo rm -f /etc/foo
 smitty docker run -t $volumes --net host puppet \
-  apply $debug $trace -e 'file {"/etc/foo": ensure => file, content => "bar\n", } notify {"$::operatingsystem":}'
-smitty cat /etc/foo
+  apply $debug $trace -e 'file {"/etc/bar/foo": ensure => file, content => "bar\n", } notify {"$::operatingsystem":}'
