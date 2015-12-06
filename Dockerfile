@@ -5,7 +5,7 @@ RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing/ >> /etc/apk/repositori
 RUN apk upgrade --update --available && \
     apk add \
       ca-certificates \
-      openssl=1.0.1p-r0 \
+      openssl=1.0.1q-r0 \
       ruby \
       util-linux \
       shadow \
