@@ -41,6 +41,17 @@ Run simple tests:
 
     script/test
 
+The test harness uses [BATS](https://github.com/sstephenson/bats).
+Output resembles:
+
+    1..6
+    ok 1 list users inside container
+    ok 2 list groups inside container
+    ok 3 # skip (requires systemctl) manipulate systemd on host OS
+    ok 4 facter works against host OS
+    ok 5 show puppet help
+    ok 6 puppet works against host OS
+
 
 License
 -------

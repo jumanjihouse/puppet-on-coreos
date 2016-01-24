@@ -1,28 +1,4 @@
 #!/bin/sh
 set -e
 
-. script/functions
-
-info "Show users and groups inside container."
-# /etc/group does not have gid 0, which causes warning in puppet:
-# /usr/bin/id: cannot find name for group ID 0
-docker_run puppet getent passwd
-docker_run puppet getent group
-
-info "Manipulate systemd on host (outside of container)."
-if [ $(which systemctl) ]; then
-  docker_run puppet systemctl restart update-engine.service
-  docker_run puppet systemctl status update-engine.service
-fi
-
-info "Use facter."
-docker_run puppet facter operatingsystem
-docker_run puppet facter osfamily
-
-info "Show puppet help."
-smitty docker run -t $volumes puppet
-
-info "Use puppet to install a file on host (outside of container)."
-info "Disable network and UTS namespaces since we store puppet cert on host."
-smitty docker run -t $volumes --net host puppet \
-  apply $debug $trace -e 'file {"/etc/bar/foo": ensure => file, content => "bar\n", } notify {"$::operatingsystem":}'
+bats test/*.bats

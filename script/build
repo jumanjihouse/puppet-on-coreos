@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-. script/functions
+. test/functions.bash
 
 options="--rm"
 echo $@ | grep '\--no-cache' &> /dev/null && options="$options --no-cache" || :

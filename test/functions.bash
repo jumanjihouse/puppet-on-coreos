@@ -28,7 +28,7 @@ volumes="
   -v /usr/bin/systemctl:/usr/bin/systemctl:ro
   -v /lib64:/lib64:ro
 "
-if ! [ ${CIRCLECI} = true ]; then
+if ! [ ${CIRCLECI} ]; then
   volumes="
     ${volumes}
     -v /run:/run:ro
