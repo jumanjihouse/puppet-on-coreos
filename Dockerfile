@@ -15,7 +15,7 @@ RUN apk upgrade --update --available && \
       shadow \
     && rm -f /var/cache/apk/* && \
     gem install -N \
-      facter:'>= 2.4.4' \
+      facter:'>= 2.4.5' \
       puppet:'= 3.8.5' \
     && rm -fr /root/.gem
 
