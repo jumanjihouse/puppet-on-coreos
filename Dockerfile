@@ -9,7 +9,7 @@ RUN echo http://dl-4.alpinelinux.org/alpine/v3.1/main/ >> /etc/apk/repositories
 RUN apk upgrade --update --available && \
     apk add \
       ca-certificates \
-      openssl=1.0.2e-r0 \
+      'openssl>=1.0.2f-r0' \
       'ruby<2.2' \
       util-linux \
       shadow \
