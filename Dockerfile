@@ -17,8 +17,8 @@ RUN apk upgrade --update --available && \
       shadow \
     && rm -f /var/cache/apk/* && \
     gem install -N \
-      facter:'>= 2.4.5' \
-      puppet:'= 3.8.5' \
+      facter:'>= 2.4.6' \
+      puppet:'= 3.8.6' \
     && rm -fr /root/.gem
 
 ENV container docker
