@@ -21,6 +21,9 @@ RUN apk upgrade --update --available && \
       puppet:'= 3.8.6' \
     && rm -fr /root/.gem
 
+RUN rm -fr /var/spool/cron/crontabs/* && \
+    :
+
 ENV container docker
 VOLUME ["/sys/fs/cgroup", "/run", "/var/lib/puppet", "/lib64"]
 
