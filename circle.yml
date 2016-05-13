@@ -2,7 +2,7 @@
 machine:
   environment:
     DATE: $(date +%Y%m%dT%H%M)
-    PUPPET_VERSION: 3.8.6
+    PUPPET_VERSION: 3.8.7
     BATS_VER: 0.4.0
   pre:
     - sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'

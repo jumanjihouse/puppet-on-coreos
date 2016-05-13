@@ -18,7 +18,7 @@ RUN apk upgrade --update --available && \
     && rm -f /var/cache/apk/* && \
     gem install -N \
       facter:'>= 2.4.6' \
-      puppet:'= 3.8.6' \
+      puppet:'= 3.8.7' \
     && rm -fr /root/.gem
 
 RUN rm -fr /var/spool/cron/crontabs/* && \
