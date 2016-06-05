@@ -36,7 +36,6 @@ load functions
   [[ ${output} =~ 'Finished catalog run' ]]
 
   sudo mkdir /etc/bar &> /dev/null || :
-  run docker run --rm -v /etc/bar:/etc/bar alpine:3.3 cat /etc/bar/foo
+  run docker run --rm -v /etc/bar:/etc/bar alpine:3.3 grep -q '^bar$' /etc/bar/foo
   [ ${status} -eq 0 ]
-  [[ ${lines[0]} =~ ^bar$ ]]
 }
