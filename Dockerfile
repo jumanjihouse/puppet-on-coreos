@@ -1,4 +1,4 @@
-FROM alpine:3.3
+FROM alpine:3.4
 
 # Puppet absolutely needs the shadow utils, such as useradd.
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing/ >> /etc/apk/repositories
