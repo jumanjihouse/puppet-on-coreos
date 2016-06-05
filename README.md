@@ -1,7 +1,7 @@
 Puppet on CoreOS
 ================
 
-[![Image Size](https://img.shields.io/imagelayers/image-size/jumanjiman/puppet/latest.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'View image size and layers')&nbsp;
+[![](https://imagelayers.io/badge/jumanjiman/puppet:latest.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'View on imagelayers.io')&nbsp;
 [![Docker Registry](https://img.shields.io/docker/pulls/jumanjiman/puppet.svg)](https://registry.hub.docker.com/u/jumanjiman/puppet)&nbsp;
 [![Circle CI](https://circleci.com/gh/jumanjihouse/puppet-on-coreos.png?circle-token=f9208a48c93c066eedc085afb8e79fd6d2f6c6a4)](https://circleci.com/gh/jumanjihouse/puppet-on-coreos/tree/master 'View CI builds')
 
