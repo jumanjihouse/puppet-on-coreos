@@ -12,6 +12,7 @@ RUN apk upgrade --update --available && \
       && \
     apk add \
       ca-certificates \
+      pciutils \
       'ruby<2.2' \
       util-linux \
       shadow \
