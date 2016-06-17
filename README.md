@@ -1,5 +1,5 @@
-Puppet on CoreOS
-================
+Puppet v3 on CoreOS
+===================
 
 [![](https://imagelayers.io/badge/jumanjiman/puppet:latest.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'View on imagelayers.io')&nbsp;
 [![Docker Registry](https://img.shields.io/docker/pulls/jumanjiman/puppet.svg)](https://registry.hub.docker.com/u/jumanjiman/puppet)&nbsp;
@@ -16,6 +16,10 @@ Overview
 Run Puppet inside a container such that it affects the state
 of the underlying CoreOS host.
 
+This repo and docker image tracks the latest Puppet 3.x version.
+If you want an image that tracks Puppet 4.x, see the
+[PuppetLabs repo](https://github.com/puppetlabs/puppet-in-docker/tree/master/puppet-agent-alpine).
+
 If you want to run Puppet Master in a container, see
 [my docker-puppet git repo](https://github.com/jumanjiman/docker-puppet).
 
@@ -28,6 +32,11 @@ Cloud-init is fine for bootstrapping CoreOS hosts, but sometimes you want to:
 * consolidate inventory data (facter facts) in PuppetDB for all your hosts
 * use a single cloud-config for all CoreOS hosts, then
   use Puppet to make minor config changes in an idempotent manner
+
+See also these blog posts:
+
+* [Using Puppet with CoreOS, rkt, Flannel and etcd](https://puppet.com/blog/using-puppet-coreos-rkt-flannel-and-etcd)
+* [Puppet in Docker: running Puppet on container-centric infrastructure](https://puppet.com/blog/puppet-docker-running-puppet-container-centric-infrastructure)
 
 
 How-to
