@@ -3,7 +3,10 @@ set -e
 
 . test/functions.bash
 
-options="--rm"
+options="
+--rm
+--build-arg PUPPET_VERSION=${PUPPET_VERSION}
+"
 echo $@ | grep '\--no-cache' &> /dev/null && options="$options --no-cache" || :
 
 info "Build images."

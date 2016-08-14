@@ -1,5 +1,7 @@
 FROM alpine:3.4
 
+ARG PUPPET_VERSION
+
 # Puppet absolutely needs the shadow utils, such as useradd.
 RUN echo http://dl-4.alpinelinux.org/alpine/edge/testing/ >> /etc/apk/repositories
 
@@ -20,7 +22,7 @@ RUN apk upgrade --update --available && \
     && rm -f /var/cache/apk/* && \
     gem install -N \
       facter:'>= 2.4.6' \
-      puppet:'= 3.8.7' \
+      puppet:"= ${PUPPET_VERSION}" \
     && rm -fr /root/.gem
 
 RUN rm -fr /var/spool/cron/crontabs/* && \
