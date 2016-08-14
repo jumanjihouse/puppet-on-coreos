@@ -6,6 +6,8 @@ set -e
 options="
 --rm
 --build-arg PUPPET_VERSION=${PUPPET_VERSION}
+--build-arg VCS_REF=${VCS_REF}
+--build-arg BUILD_DATE=${BUILD_DATE}
 "
 echo $@ | grep '\--no-cache' &> /dev/null && options="$options --no-cache" || :
 

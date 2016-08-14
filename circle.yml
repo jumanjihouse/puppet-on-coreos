@@ -27,6 +27,7 @@ dependencies:
 
 test:
   override:
+    - docker inspect puppet
     - script/test
 
 # https://circleci.com/docs/configuration#deployment
@@ -42,3 +43,4 @@ deployment:
       - docker tag puppet jumanjiman/puppet:latest
       - docker push jumanjiman/puppet:latest
       - docker logout
+      - curl -X POST 'https://hooks.microbadger.com/images/jumanjiman/puppet/28hXfM14w5i9q_1-yusNB2y5jLQ='

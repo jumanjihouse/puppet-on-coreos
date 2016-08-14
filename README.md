@@ -1,13 +1,16 @@
 Puppet v3 on CoreOS
 ===================
 
-[![](https://imagelayers.io/badge/jumanjiman/puppet:latest.svg)](https://imagelayers.io/?images=jumanjiman/puppet:latest 'View on imagelayers.io')&nbsp;
+[![Download size](https://images.microbadger.com/badges/image/jumanjiman/puppet.svg)](http://microbadger.com/images/jumanjiman/puppet "View on microbadger.com")&nbsp;
+[![Version](https://images.microbadger.com/badges/version/jumanjiman/puppet.svg)](http://microbadger.com/images/jumanjiman/puppet "View on microbadger.com")
 [![Docker Registry](https://img.shields.io/docker/pulls/jumanjiman/puppet.svg)](https://registry.hub.docker.com/u/jumanjiman/puppet)&nbsp;
 [![Circle CI](https://circleci.com/gh/jumanjihouse/puppet-on-coreos.png?circle-token=f9208a48c93c066eedc085afb8e79fd6d2f6c6a4)](https://circleci.com/gh/jumanjihouse/puppet-on-coreos/tree/master 'View CI builds')
 
 Project URL: https://github.com/jumanjihouse/puppet-on-coreos
 
 Docker registry: https://registry.hub.docker.com/u/jumanjiman/puppet/
+
+Image metadata: http://microbadger.com/images/jumanjiman/puppet
 
 
 Overview
