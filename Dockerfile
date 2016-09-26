@@ -24,7 +24,10 @@ RUN echo http://dl-4.alpinelinux.org/alpine/v3.1/main/ >> /etc/apk/repositories
 
 RUN apk upgrade --update --available && \
     apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/main/ \
-      'openssl>=1.0.2h-r1' \
+      'openssl>=1.0.2j-r0' \
+      && \
+    apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/community/ \
+      shadow \
       && \
     apk add \
       ca-certificates \
@@ -32,7 +35,6 @@ RUN apk upgrade --update --available && \
       pciutils \
       'ruby<2.2' \
       util-linux \
-      shadow \
     && rm -f /var/cache/apk/* && \
     gem install -N \
       facter:'>= 2.4.6' \
