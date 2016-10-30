@@ -3,6 +3,11 @@ set -e
 
 . test/functions.bash
 
+if [ -z ${PUPPET_VERSION} ]; then
+  echo 'You must export PUPPET_VERSION environment variable to build this image.' >&2
+  exit 1
+fi
+
 options="
 --rm
 --build-arg PUPPET_VERSION=${PUPPET_VERSION}
