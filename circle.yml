@@ -17,12 +17,12 @@ dependencies:
   override:
     - docker info
     - docker version
-    - script/build
+    - ci/build.sh
 
 test:
   override:
     - docker inspect puppet
-    - script/test
+    - ci/test.sh
 
 # https://circleci.com/docs/configuration#deployment
 # https://circleci.com/docs/environment-variables
@@ -31,4 +31,4 @@ deployment:
     branch: master
     owner: jumanjihouse
     commands:
-      - script/publish.sh
+      - ci/publish.sh
