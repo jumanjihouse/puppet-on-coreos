@@ -4,7 +4,7 @@ set -o pipefail
 
 . ci/vars
 
-docker login -e "${mail}" -u "${user}" -p "${pass}"
+docker login -u "${user}" -p "${pass}"
 
 # Pessimistic tag.
 docker tag puppet "jumanjiman/puppet:${TAG}"
