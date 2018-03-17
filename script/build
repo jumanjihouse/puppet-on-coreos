@@ -3,10 +3,25 @@ set -e
 
 . test/functions.bash
 
-if [ -z ${PUPPET_VERSION} ]; then
-  echo 'You must export PUPPET_VERSION environment variable to build this image.' >&2
-  exit 1
-fi
+cat > ci/vars <<EOF
+# This file (ci/vars) is automatically created by ci/build and
+# is never checked into version control.
+
+declare -rx PUPPET_VERSION=3.8.7
+
+declare -rx BATS_VER=0.4.0
+
+BUILD_DATE="$(date +%Y%m%dT%H%M)"
+declare -rx BUILD_DATE
+
+VCS_REF="$(git describe --dirty --tags --always --abbrev=7)"
+declare -rx VCS_REF
+
+TAG=\${PUPPET_VERSION}-\${BUILD_DATE}-git-\${VCS_REF}
+declare -rx TAG
+EOF
+
+. ci/vars
 
 options="
 --rm
