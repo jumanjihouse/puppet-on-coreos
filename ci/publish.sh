@@ -2,8 +2,10 @@
 set -eEu
 set -o pipefail
 
+# shellcheck disable=SC1091
 . ci/vars
 
+# shellcheck disable=SC2154
 docker login -u "${user}" -p "${pass}"
 
 # Pessimistic tag.

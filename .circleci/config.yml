@@ -21,6 +21,11 @@ jobs:
             docker version
 
       - run:
+          name: Bootstrap the local environment
+          command: |
+            ci/bootstrap.sh
+
+      - run:
           name: Build the image
           command: |
             ci/build.sh

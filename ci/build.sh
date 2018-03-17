@@ -1,6 +1,8 @@
 #!/bin/bash
-set -e
+set -eEu
+set -o pipefail
 
+# shellcheck disable=SC1091
 . test/functions.bash
 
 cat > ci/vars <<EOF
@@ -21,6 +23,7 @@ TAG=\${PUPPET_VERSION}-\${BUILD_DATE}-git-\${VCS_REF}
 declare -rx TAG
 EOF
 
+# shellcheck disable=SC1091
 . ci/vars
 
 options="
@@ -29,13 +32,17 @@ options="
 --build-arg VCS_REF=${VCS_REF}
 --build-arg BUILD_DATE=${BUILD_DATE}
 "
-echo $@ | grep '\--no-cache' &> /dev/null && options="$options --no-cache" || :
+if echo "$@" | grep '\--no-cache' &> /dev/null; then
+  options="$options --no-cache"
+fi
+readonly options
 
 info "Build images."
+# shellcheck disable=SC2086
 smitty docker build $options -t puppet .
 
 info "Show image sizes."
-docker images | egrep '^puppet\b' | sort
+docker images | grep -E '^puppet\b' | sort
 
 echo
 echo "WARN: you should docker tag the puppet image."
