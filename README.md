@@ -47,11 +47,11 @@ How-to
 
 Build images:
 
-    script/build
+    ci/build.sh
 
 Run simple tests:
 
-    script/test
+    ci/test.sh
 
 The test harness uses [BATS](https://github.com/sstephenson/bats).
 Output resembles:

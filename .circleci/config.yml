@@ -1,0 +1,45 @@
+---
+# https://circleci.com/docs/docker
+version: 2
+jobs:
+  build:
+    docker:
+      # https://github.com/jumanjihouse/cci/pulls?q=is%3Apr+is%3Aclosed
+      - image: jumanjiman/cci:20180312T0301-git-74f5e2a
+
+    working_directory: ~/workdir/
+
+    steps:
+      - setup_remote_docker
+
+      - checkout
+
+      - run:
+          name: Show the environment
+          command: |
+            docker info
+            docker version
+
+      - run:
+          name: Bootstrap the local environment
+          command: |
+            ci/bootstrap.sh
+
+      - run:
+          name: Build the image
+          command: |
+            ci/build.sh
+
+      - run:
+          name: Test the image
+          command: |
+            docker inspect puppet
+            ci/test.sh
+
+      - deploy:
+          name: Deploy from master branch
+          # yamllint disable rule:line-length
+          command: |
+            if [[ ${CIRCLE_BRANCH} = master ]] && [[ -z ${CIRCLE_PR_NUMBER} ]]; then
+              ci/publish.sh
+            fi
