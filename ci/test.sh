@@ -11,8 +11,5 @@ set -o pipefail
 # Run various checks unrelated to Puppet.
 run_precommit
 
-# Check for whitespace errors.
-check_whitespace
-
 # Run unit and acceptance tests.
 bats test/*.bats
